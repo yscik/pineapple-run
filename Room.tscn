@@ -1,0 +1,304 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0.106509, 1 )
+colors = PoolColorArray( 0.173874, 0.385773, 0.839844, 1, 0.945312, 0.878384, 0.649902, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+
+flags = 4
+gradient = SubResource( 1 )
+width = 100
+
+[node name="Node2D" type="Node2D"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Bg" type="Polygon2D" parent="." index="0"]
+
+polygon = PoolVector2Array( -86.1507, -104.838, -162.177, 1067.24, 1369.26, 1078.4, 1263.26, -109.936 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = SubResource( 2 )
+texture_offset = Vector2( 0, -100 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 83.3
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Texture", "Transform" ]
+
+[node name="Wall" type="Polygon2D" parent="." index="1"]
+
+position = Vector2( 454.948, -668 )
+scale = Vector2( 1.25453, 2.01644 )
+polygon = PoolVector2Array( 420, 227, 420, 783, 889, 783, 888.821, 227.028 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="wat" type="RigidBody2D" parent="." index="2"]
+
+position = Vector2( 152.165, 601.674 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 3.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Angular", "Collision", "Pickable", "Transform" ]
+
+[node name="Wall2" type="Polygon2D" parent="wat" index="0"]
+
+position = Vector2( -825.319, -556.757 )
+polygon = PoolVector2Array( 420, 227, 420, 783, 889, 783, 888.821, 227.028 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wat" index="1"]
+
+position = Vector2( 312.886, 1.36041 )
+build_mode = 0
+polygon = PoolVector2Array( -327.914, -330.969, -252.348, -331.124, -250.373, 222.703, -323.833, 221.343 )
+
+[node name="Platform" type="CollisionPolygon2D" parent="wat" index="2"]
+
+position = Vector2( -825.319, -556.757 )
+scale = Vector2( 1, 0.999999 )
+build_mode = 0
+polygon = PoolVector2Array( 956.213, 485.48, 1111.38, 485.48, 1104.25, 512.444, 963.355, 511.735 )
+
+[node name="Handle" type="Polygon2D" parent="wat/Platform" index="0"]
+
+position = Vector2( -140.968, 8.77039 )
+polygon = PoolVector2Array( 955.869, 485.529, 1110.76, 485.529, 1110.17, 490.443, 954.995, 490.039 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Platform" type="Polygon2D" parent="wat/Platform" index="1"]
+
+position = Vector2( 0, 0.00158691 )
+polygon = PoolVector2Array( 956.738, 485.729, 1111.38, 485.233, 1104.2, 510.029, 963.115, 511.021 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="wat2" type="RigidBody2D" parent="." index="3"]
+
+visible = false
+position = Vector2( 393.148, 715.557 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Angular", "Collision", "Pickable", "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wat2" index="0"]
+
+position = Vector2( 367.948, 19.921 )
+build_mode = 0
+polygon = PoolVector2Array( -372.976, -100.46, -326.211, -88.7685, -276.106, 39.8356, -441.454, 39.8356 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall3" type="Polygon2D" parent="." index="4"]
+
+position = Vector2( -2252.14, -718.323 )
+scale = Vector2( 4.30193, 1.00961 )
+polygon = PoolVector2Array( 420, 227, 420, 783, 889, 783, 888.821, 227.028 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Floor" type="Polygon2D" parent="." index="5"]
+
+position = Vector2( -495.151, 642.021 )
+polygon = PoolVector2Array( 420, 227, 420, 783, 889, 783, 888.821, 227.028 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="RigidBody2D" type="StaticBody2D" parent="Floor" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/RigidBody2D" index="0"]
+
+position = Vector2( 0, -1.85059 )
+build_mode = 0
+polygon = PoolVector2Array( 449.307, 190.121, 1711.44, 197.496, 1694.78, 639.794, 459.56, 654.4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player" type="KinematicBody2D" parent="." index="6"]
+
+position = Vector2( 571.841, 655.119 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="0"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit", "Smoothing" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player" index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( 1.83594, -4.52341, 1.83594, 52.8457, 33.2964, 54.6964, 42.5495, -0.822174 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Player" index="2"]
+
+polygon = PoolVector2Array( -1.8653, -4.52341, 38.8483, -0.822174, 35.147, 54.6964, 1.83594, 52.8457 )
+uv = PoolVector2Array(  )
+color = Color( 0.949219, 0.741722, 0.033371, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Player" index="3"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 30000.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Player/RigidBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 1.83594, -4.52341, 1.83594, 52.8457, 33.2964, 54.6964, 42.5495, -0.822174 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+

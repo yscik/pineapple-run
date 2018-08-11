@@ -1,0 +1,28 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="Collapse Zone"
+run/main_scene="res://Tube.tscn"
+config/icon="res://icon.png"
+
+[layer_names]
+
+2d_physics/layer_1="wall"
+2d_physics/layer_2="bullet"
+2d_physics/layer_3="player"
+
+[rendering]
+
+quality/intended_usage/framebuffer_allocation=0
+quality/filters/use_nearest_mipmap_filter=true
+quality/filters/msaa=3
+environment/default_environment="res://default_env.tres"

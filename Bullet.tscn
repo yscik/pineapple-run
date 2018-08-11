@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Bullet.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 3.35233
+height = 0.0
+
+[node name="Bullet" type="RigidBody2D"]
+
+position = Vector2( 400, 310 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 1
+mode = 0
+mass = 0.1
+friction = 0.1
+bounce = 0.6
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+v = Vector2( 0, 0 )
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+
+position = Vector2( -4.86108, -4.93057 )
+polygon = PoolVector2Array( 1.42462, 1.60202, 4.89448, 0, 8.23578, 1.60202, 9.77792, 4.94333, 8.36429, 8.15613, 4.76596, 10, 1.29611, 8.28464, 0, 4.81485 )
+uv = PoolVector2Array(  )
+color = Color( 0.0880127, 0.435152, 0.804688, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 1 )
+
+
