@@ -1,19 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Bullet.gd" type="Script" id=1]
+[ext_resource path="res://assets/bullet/bullets1.png" type="Texture" id=2]
+[ext_resource path="res://assets/bullet/bullets2.png" type="Texture" id=3]
+[ext_resource path="res://assets/bullet/bullets3.png" type="Texture" id=4]
+[ext_resource path="res://assets/bullet/bullets4.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 3.35233
+radius = 10.0
 height = 0.0
 
-[node name="Bullet" type="RigidBody2D"]
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Bullet" type="RigidBody2D" index="0"]
 
 position = Vector2( 400, 310 )
 input_pickable = false
 collision_layer = 2
-collision_mask = 1
+collision_mask = 9
 mode = 0
 mass = 0.1
 friction = 0.1
@@ -30,17 +43,32 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 v = Vector2( 0, 0 )
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( -4.86108, -4.93057 )
-polygon = PoolVector2Array( 1.42462, 1.60202, 4.89448, 0, 8.23578, 1.60202, 9.77792, 4.94333, 8.36429, 8.15613, 4.76596, 10, 1.29611, 8.28464, 0, 4.81485 )
+scale = Vector2( 0.917288, 0.917288 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="." index="1"]
+
+visible = false
+modulate = Color( 0.925781, 0.514056, 0.032547, 1 )
+scale = Vector2( 0.325659, 0.419349 )
+frames = SubResource( 2 )
+animation = "default"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Polygon" type="Polygon2D" parent="." index="2"]
+
+position = Vector2( 0.356269, -0.603854 )
+scale = Vector2( 1.80569, 2.32111 )
+polygon = PoolVector2Array( -13.6839, -11.8598, 19.6075, -12.0176, 19.4497, 5.18033, -13.5261, 5.02255 )
 uv = PoolVector2Array(  )
-color = Color( 0.0880127, 0.435152, 0.804688, 1 )
+color = Color( 0.917969, 0.438618, 0.0537872, 1 )
 vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
+offset = Vector2( -2.56741, 3.49747 )
 antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
@@ -48,9 +76,5 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
-shape = SubResource( 1 )
 
 

@@ -10,15 +10,26 @@ config_version=3
 
 [application]
 
-config/name="Collapse Zone"
+config/name="Pineapple Run"
 run/main_scene="res://Tube.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/Icon.png"
+
+[autoload]
+
+Global="*res://Global.gd"
+
+[display]
+
+window/size/width=1600
+window/size/height=900
+window/size/fullscreen=true
 
 [layer_names]
 
 2d_physics/layer_1="wall"
 2d_physics/layer_2="bullet"
 2d_physics/layer_3="player"
+2d_physics/layer_4="item"
 
 [rendering]
 

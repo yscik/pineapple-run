@@ -1,36 +1,65 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Item.gd" type="Script" id=1]
-[ext_resource path="res://assets/Box.png" type="Texture" id=2]
-[ext_resource path="res://assets/Arrow.png" type="Texture" id=3]
+[ext_resource path="res://assets/explode/Box-In.png" type="Texture" id=2]
+[ext_resource path="res://assets/explode/Box-Out.png" type="Texture" id=3]
+[ext_resource path="res://assets/explode/Box.png" type="Texture" id=4]
+[ext_resource path="res://assets/explode/block_explode_01.png" type="Texture" id=5]
+[ext_resource path="res://assets/explode/block_explode_02.png" type="Texture" id=6]
+[ext_resource path="res://assets/explode/block_explode_03.png" type="Texture" id=7]
+[ext_resource path="res://assets/explode/block_explode_04.png" type="Texture" id=8]
+[ext_resource path="res://assets/explode/block_explode_05.png" type="Texture" id=9]
+[ext_resource path="res://assets/explode/block_explode_06.png" type="Texture" id=10]
+[ext_resource path="res://sfx/e3.wav" type="AudioStream" id=11]
+[ext_resource path="res://sfx/good.wav" type="AudioStream" id=12]
+[ext_resource path="res://sfx/bad.wav" type="AudioStream" id=13]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource_name = "Destroy"
 length = 1.0
 loop = false
 step = 0.1
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 42.9169, 42.8231 )
+extents = Vector2( 69.109, 69.9525 )
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), null ],
+"loop": false,
+"name": "Explode",
+"speed": 30.0
+} ]
 
 [node name="Item" type="StaticBody2D" groups=[
 "item",
 ]]
 
+scale = Vector2( 0.8, 0.8 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 3
+collision_layer = 8
+collision_mask = 0
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
-bounce = 0.0
+bounce = 1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
-action = null
-wall = null
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+action = ""
+wall = "bottom"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 
@@ -39,52 +68,69 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Destroy = SubResource( 2 )
+anims/Destroy = SubResource( 1 )
 blend_times = [  ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="Box" type="AnimatedSprite" parent="." index="1"]
 
-position = Vector2( 44, 44 )
-shape = SubResource( 1 )
+position = Vector2( 70.4883, 71.3176 )
+frames = SubResource( 2 )
+animation = "default"
+_sections_unfolded = [ "Material", "Rect", "Transform", "Visibility" ]
 
-[node name="Box" type="TextureRect" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-modulate = Color( 0.964706, 0.85098, 0.254902, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 88.0
-margin_bottom = 88.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 2 )
-stretch_mode = 0
-_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+position = Vector2( 69.7622, 71.3799 )
+shape = SubResource( 3 )
 
-[node name="Action" type="TextureRect" parent="." index="3"]
+[node name="Explode" type="AnimatedSprite" parent="." index="3"]
 
-modulate = Color( 0.964706, 0.85098, 0.254902, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 84.0
-margin_bottom = 84.0
-rect_pivot_offset = Vector2( 40, 40 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 3 )
-stretch_mode = 0
-_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+visible = false
+position = Vector2( 68.9436, 71.0386 )
+frames = SubResource( 4 )
+animation = "Explode"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 11 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "SFX"
+area_mask = 1
+
+[node name="Good" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "SFX"
+area_mask = 1
+
+[node name="Bad" type="AudioStreamPlayer2D" parent="." index="6"]
+
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "SFX"
+area_mask = 1
+
+[node name="Tween" type="Tween" parent="." index="7"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/e2.wav-f172409cd7797a1f9679ce418574ebcd.sample"
+
+[deps]
+
+source_file="res://sfx/e2.wav"
+dest_files=[ "res://.import/e2.wav-f172409cd7797a1f9679ce418574ebcd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
